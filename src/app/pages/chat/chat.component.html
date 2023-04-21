@@ -1,0 +1,39 @@
+<!-- <div class="containerChats">
+
+  <div class="listChats">
+    <mat-list>
+      <mat-list-item *ngFor="let message of AllMessages">
+        <div class="buttonChat">
+          <div class="ImgUser">
+          <div mat-card-avatar class="avatar"><img  [src]="message.imgSender? message.imgSender : 'https://www.researchgate.net/profile/Maria-Monreal/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png'" alt=""></div>
+          </div>
+          <div class="btnChat">
+            <h3 >{{message.sender}}</h3>
+            <div  class="container_Topic_Date">
+              <span class="topic">{{message.topic}}</span>
+              <span class="dateSend">{{message.sentAt}}</span>
+            </div>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="chat">
+
+  </div>
+
+
+</div>
+ -->
+
+  <div class="chatContainer">
+   <p [ngClass]="{'local': message.messageType === 1,'remoto' : message.messageType === 2}"
+   *ngFor="let message of chatService.chats">{{message.text}}</p>
+  </div>
+
+
+  <div class="inputContainer">
+   <form (submit)="sendMessage()">
+     <input [(ngModel)]="text" [ngModelOptions]="{standalone:true}" type="text">
+   </form>
+  </div>

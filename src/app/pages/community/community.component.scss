@@ -1,0 +1,99 @@
+.containerCommunity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .community {
+    width: 75%;
+    border: solid red 1px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+
+    .ContainerCard {
+      width: 20%;
+      height: fit-content;
+      background: white;
+      border-radius: 15px 15px 10px 10px;
+
+      .userCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        align-items: center;
+        text-align: left;
+        overflow: hidden;
+        width: 100%;
+        padding: 1rem;
+
+        mat-card-header {
+          padding: 0;
+
+          .avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            border: solid red 1px;
+
+            img {
+              border-radius: 90px;
+              width: 100%;
+            }
+          }
+        }
+
+        .ContentCard {
+          display: flex;
+          flex-direction: column;
+          gap: .5rem;
+          border: solid red 1px;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+
+          .p-description {
+            text-overflow: ellipsis;
+            white-space: break-spaces;
+            overflow: hidden;
+            height: 60px;
+            width: 100%;
+          }
+
+          .p-location {
+            display: flex;
+            align-items: center;
+
+            .mat-icon {
+              color: black;
+            }
+          }
+        }
+
+      }
+
+      .sendMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0 0 10px 10px;
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+}

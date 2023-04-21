@@ -1,0 +1,106 @@
+// .containerChats{
+//   display: flex;
+//   .listChats{
+//     width: 30%;
+//     border: solid red 1px;
+//     height: max-content;
+//     mat-list{
+//       border: solid black;
+//       height: fit-content;
+//       mat-list-item{
+//         padding: 0;
+//         margin: 0;
+//         height: fit-content;
+//       }
+//     }
+
+//     .buttonChat{
+//       display: flex;
+//       align-items: center;
+//       border: solid red 1px;
+//       cursor: pointer;
+//       padding: 0 1rem;
+//       gap: 2rem;
+//       .ImgUser{
+//         display: flex;
+//         align-items: center;
+//       }
+//       .avatar {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         width: 70px;
+//         height: 70px;
+
+//         img {
+//           border-radius: 90px;
+//           width: 100%;
+//         }
+//       }
+//       .btnChat{
+//         width: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         h3{
+//           margin: 0;
+//           padding: 0;
+//         }
+//         .container_Topic_Date{
+//           display: flex;
+//           height: fit-content;
+//           flex-direction: column;
+//           .topic{
+//             width: 100%;
+//           }
+//           .dateSend{
+//             display: flex;
+//             font-size: 12px;
+//             width: 100%;
+//             justify-content: right;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+.chatContainer {
+  padding: 30px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px;
+  height: max-content;
+  border: solid red 1px;
+
+  .local {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: darkcyan;
+    max-width: 80%;
+    color: white;
+    font-size: 17px;
+    align-self: flex-start;
+  }
+
+  .remoto {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: darkkhaki;
+    max-width: 80%;
+    color: white;
+    font-size: 17px;
+    align-self: flex-end;
+  }
+}
+
+.inputContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+.Modal{
+  border: solid red 1px;
+  width: 550px;
+
+
+    .FormCreatePublication{
+      padding: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: solid white 1px;
+      gap: 1rem;
+      input,textarea {
+        width: 100%;
+      }
+      .btnSubmit{
+        width: 50%;
+      }
+
+  }
+
+  .ContainerBtn{
+    display: flex;
+    justify-content: end;
+    padding: .5rem;
+    .BtnClose{
+
+    }
+  }
+}

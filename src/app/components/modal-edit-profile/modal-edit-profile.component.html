@@ -1,0 +1,25 @@
+<div class="Modal">
+  <div class="Containerform">
+    <form class="FormCreatePublication" [formGroup]="PublicationForm" (ngSubmit)="editarPost()">
+      <input type="text" placeholder="Company" formControlName="company">
+      <textarea type="text" placeholder="Company Description" formControlName="companyDescription"></textarea>
+      <input type="url" placeholder="Image Url" formControlName="userImg">
+      <div>
+        <select formControlName="ubication">
+          <option value="" >Ubicacion de la empresa</option>
+          <option value="Bogota">Bogota</option>
+          <option value="Medellin">Medellin</option>
+          <option value="Tunja">Tunja</option>
+          <option value="Barranquilla">Barranquilla</option>
+          <option value="Exterior">Exterior</option>
+
+        </select>
+      </div>
+      <button type="submit" class="btnSubmit">Submit</button>
+    </form>
+  </div>
+
+  <div class="ContainerBtn">
+    <button class="BtnClose" (click)="cLoseModal()">Close</button>
+  </div>
+</div>

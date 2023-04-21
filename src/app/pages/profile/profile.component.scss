@@ -1,0 +1,39 @@
+.containerProfile{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  .user{
+    height: fit-content;
+    display: flex;
+    .imgUser{
+      display: flex;
+      border: solid blue 1px;
+      align-items: center;
+      img{
+        width: 200px;
+      }
+    }
+    .infoUser{
+      display: flex;
+      flex-direction: column;
+      margin: 1rem;
+    }
+    .edit{
+      display: flex;
+      align-items:end;
+      border: solid blue 1px;
+      .btnEdit{
+        padding: 2rem 1rem;
+      }
+    }
+  }
+
+  .publicationsUser{
+    border: solid white 1px;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+  }
+
+}

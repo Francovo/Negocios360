@@ -1,0 +1,14 @@
+<div class="Modal">
+  <div class="Containerform">
+    <form class="FormCreatePublication" [formGroup]="PublicationForm" (ngSubmit)="editarPost()">
+      <input type="text" placeholder="Title" formControlName="titulo">
+      <textarea type="text" placeholder="Description" formControlName="descripcion"></textarea>
+      <input type="url" placeholder="Image Url" formControlName="img">
+      <button type="submit" class="btnSubmit">Submit</button>
+    </form>
+  </div>
+
+  <div class="ContainerBtn">
+    <button class="BtnClose" (click)="cLoseModal()">Close</button>
+  </div>
+</div>

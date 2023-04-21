@@ -1,0 +1,29 @@
+<div class="containerProfile">
+
+  <div class="user">
+    <div class="imgUser">
+      <img mat-card-image src="{{ DataUser.userImg ? DataUser.userImg : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' }}" alt="{{ DataUser.company}}" (error)="setDefaultImage($event)">
+    </div>
+
+    <div class="infoUser">
+      <h1>{{DataUser.company}}</h1>
+      <h1>{{DataUser.companyDescription}}</h1>
+      <h1>{{DataUser.companyDescription}}</h1>
+      <h1 *ngIf="DataUser.ubication"><mat-icon> location_on</mat-icon> {{DataUser.ubication}}</h1>
+
+
+    </div>
+    <div class="edit">
+      <mat-card-actions>
+        <button mat-raised-button class="btnEdit" (click)="openModalCreatePublication(DataUser)">Edit Profile</button>
+      </mat-card-actions>
+    </div>
+
+  </div>
+
+  <div class="publicationsUser">
+    <app-card [Data]="DataPublications"></app-card>
+  </div>
+
+
+</div>

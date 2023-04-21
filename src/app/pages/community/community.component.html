@@ -1,0 +1,33 @@
+<div class="containerCommunity">
+
+  <app-search-bar (searchQueryChanged)="getUsers($event)"></app-search-bar>
+  <div class="community" *ngIf="dataUsers && dataUsers.length > 0; else DataNotFound">
+    <div *ngFor="let user of dataUsers" class="ContainerCard">
+      <mat-card class="userCard" >
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"><img src="{{user.userImg}}" alt=""></div>
+        </mat-card-header>
+        <div class="ContentCard">
+          <mat-card-title class="title">{{user.company}}</mat-card-title>
+          <mat-card-content>
+            <p class="p-description">
+              {{user.companyDescription}}
+            </p>
+
+            <p class="p-location"><mat-icon>{{user.ubication ? 'location_on' : ''}} </mat-icon> {{user.ubication}}</p>
+          </mat-card-content>
+        </div>
+      </mat-card>
+      <div class="sendMessage">
+        <button mat-raised-button (click)="openModalMessage(user)">
+        <mat-icon> message</mat-icon></button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #DataNotFound>
+    <h1>Busqueda no encontrada</h1>
+  </ng-template>
+
+</div>
+

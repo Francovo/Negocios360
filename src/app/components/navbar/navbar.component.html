@@ -1,0 +1,42 @@
+<div class="containerNavBar">
+  <mat-toolbar>
+    <button mat-button class="BtnHome">My App</button>
+  <span class="spacer"></span>
+  <div class="NavOptions">
+    <button mat-button class="BtnNav " routerLink="/negocios360/dashboard" routerLinkActive="selected">
+      <div class="infoBtn ">
+        <mat-icon class="icon">home</mat-icon>
+        <label class="labelbtn">Home</label>
+      </div>
+    </button>
+    <button mat-button class="BtnNav"  routerLink="/negocios360/community" routerLinkActive="selected">
+      <div class="infoBtn ">
+        <mat-icon class="icon">supervisor_account</mat-icon>
+        <label class="labelbtn">Community</label>
+      </div>
+    </button>
+    <button mat-button class="BtnNav " routerLink="/negocios360/chat" routerLinkActive="selected">
+      <div class="infoBtn ">
+        <mat-icon class="icon">chat</mat-icon>
+        <label class="labelbtn">Msg</label>
+      </div>
+    </button>
+    <button mat-button class="BtnNav" routerLink="/negocios360/profile" routerLinkActive="selected">
+      <div class="infoBtn">
+        <mat-icon class="icon">perm_identity</mat-icon>
+        <label class="labelbtn">Profile</label>
+      </div>
+    </button>
+    <hr>
+    <button mat-button class="BtnNav" (click)="logout()">
+      <div class="infoBtn ">
+        <mat-icon class="icon">highlight_off</mat-icon>
+        <label class="labelbtn">Logout</label>
+      </div>
+    </button>
+  </div>
+
+</mat-toolbar>
+</div>
+
+

@@ -1,0 +1,30 @@
+
+<div class="ContainerDashboard">
+
+  <div class="Dashboard">
+
+    <div class="news"></div>
+
+    <div class="containerDash">
+      <div class="createPubli">
+        <button class="BtnCreate" (click)="openModalCreatePublication()">
+          Create Publication
+        </button>
+        <div class="InputSearch">
+          <app-search-bar type="publicaciones" (searchQueryChanged)="getPublications($event)" ></app-search-bar>
+        </div>
+      </div>
+
+      <div class="containerCard" *ngIf="dataPublications?.length > 0; else DataNotFound">
+          <app-card [Data]="dataPublications"></app-card>
+      </div>
+
+      <ng-template #DataNotFound>
+        <h1>Busqueda no encontrada</h1>
+      </ng-template>
+
+    </div>
+
+  </div>
+</div>
+

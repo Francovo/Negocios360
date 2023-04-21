@@ -1,0 +1,34 @@
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div>
+      <input type="url" placeholder="URL Profile Image" formControlName="userImg">
+    </div>
+    <div>
+      <input type="text" placeholder="Company" formControlName="company">
+    </div>
+    <div>
+      <input type="email" placeholder="Email" formControlName="email">
+    </div>
+    <div>
+      <input type="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <div>
+      <textarea type="text" placeholder="Description Company" formControlName="companyDescription" minlength="1"></textarea>
+    </div>
+    <div>
+      <select formControlName="ubication">
+        <option value="">Ubicacion de la empresa</option>
+        <option value="Bogota">Bogota</option>
+        <option value="Medellin">Medellin</option>
+        <option value="Tunja">Tunja</option>
+        <option value="Barranquilla">Barranquilla</option>
+        <option value="Exterior">Exterior</option>
+
+      </select>
+    </div>
+    <div>
+      <button type="submit">Register</button>
+    </div>
+  </form>
+</div>
