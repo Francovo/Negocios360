@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsersData } from 'src/app/interfaces/users.interface';
 import { UsersService } from '../../services/users.service';
+import Swal from 'sweetalert2';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-modal-edit-profile',
@@ -31,8 +33,14 @@ export class ModalEditProfileComponent {
       // no se borre
       const formData = {...this.PublicationForm.value, id: this.dataUser.id, email: this.dataUser.email, password: this.dataUser.password, }
       console.log(formData);
-      this.usersService.putUserProfile(formData, this.dataUser.id).subscribe()
-      this.dialogRef.close();
+      this.usersService.putUserProfile(formData, this.dataUser.id)
+      .pipe(
+        delay(500)
+      )
+      .subscribe(() => {
+        Swal.fire('Success', 'Profile updated', 'success');
+        this.dialogRef.close();
+      });
     }
   }
 
