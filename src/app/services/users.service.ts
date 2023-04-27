@@ -28,7 +28,6 @@ export class UsersService {
     return this.http.get(`${base_url}/usuarios/${localStorage.getItem('token')}`)
     .pipe(
       tap(
-        resp => console.log(resp)
       ),
     catchError(error => {
       console.error(error);
@@ -41,7 +40,6 @@ export class UsersService {
     return this.http.put(`${base_url}/usuarios/${id}`, formData)
     .pipe(
       tap(
-        resp => console.log(resp)
       ),
       catchError((error:any) =>
        of(console.error(error))

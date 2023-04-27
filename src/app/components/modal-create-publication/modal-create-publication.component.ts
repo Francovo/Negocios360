@@ -38,7 +38,6 @@ export class ModalCreatePublicationComponent {
 // Se ejecuta el servicio que hace la peticion de la imagen del usuario, y aparte se ejecuta
 // la funcion que postea la publicacion, ya con la imagen del user o empresa en ella
     this.authService.getUserImg().subscribe(img => {
-      console.log(img);
       const formData = {...this.PublicationForm.value, idUser: localStorage.getItem('token'), fecha: formattedDate, createdBy: localStorage.getItem('company'), userImg: img};
       this.publicationsService.postPublications(formData)
       .pipe(

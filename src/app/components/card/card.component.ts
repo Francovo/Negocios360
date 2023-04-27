@@ -5,6 +5,7 @@ import { PublicationsService } from 'src/app/services/publications.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { delay } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-card',
@@ -19,14 +20,16 @@ export class CardComponent implements OnChanges {
 
 
   DataPublications!: PublicationsData[]
+  DataUser!: any
 
-  constructor(private publicationsService: PublicationsService, public dialog: MatDialog
+  constructor(private publicationsService: PublicationsService, public dialog: MatDialog, private userService: UsersService,
   ) {}
 
 
   ngOnChanges() {
     if (this.Data) {
     this.DataPublications = this.Data
+    this.userService.getProfile().subscribe((resp: any) => this.DataUser = resp)
     }
   }
 

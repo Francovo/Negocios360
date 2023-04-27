@@ -2,10 +2,10 @@
   <div *ngFor="let publication of DataPublications">
     <mat-card class="publicationCard" >
       <mat-card-header class="Header">
-        <div mat-card-avatar class="avatar"><img src="{{publication.userImg}}" alt=""></div>
+        <div mat-card-avatar class="avatar"><img src="{{publication?.userImg}}" alt=""></div>
         <div class="containerTitle">
           <mat-card-title class="title">{{publication.titulo}}</mat-card-title>
-          <mat-card-subtitle class="createdBy">{{publication.createdBy}}</mat-card-subtitle>
+          <mat-card-subtitle class="createdBy">{{DataUser?.company}}</mat-card-subtitle>
         </div>
         <button mat-raised-button color="warn" *ngIf="isOwner(publication.idUser)" (click)="openModalEditPublication(publication)" class="btnEdit">Editar</button>
       </mat-card-header>

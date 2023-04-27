@@ -32,7 +32,6 @@ export class ModalEditProfileComponent {
       // Se envia la informacion del form y aparte se adjunta la informacion que no se edita para que en el back
       // no se borre
       const formData = {...this.PublicationForm.value, id: this.dataUser.id, email: this.dataUser.email, password: this.dataUser.password, }
-      console.log(formData);
       this.usersService.putUserProfile(formData, this.dataUser.id)
       .pipe(
         delay(500)

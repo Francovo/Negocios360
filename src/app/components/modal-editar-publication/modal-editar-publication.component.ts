@@ -43,7 +43,6 @@ export class ModalEditarPublicationComponent {
         createdBy: this.dataEdit.createdBy,
         userImg: this.dataEdit.userImg,
       };
-      console.log(formData);
       this.publicationsService
         .putPublications(formData, this.dataEdit.id)
         .pipe(delay(500))

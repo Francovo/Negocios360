@@ -30,11 +30,14 @@ export class ProfileComponent implements OnInit{
   }
 
 
-  openModalCreatePublication(data: any) {
+  openModalEditProfile(data: any) {
     const dialogRef = this.dialog.open(ModalEditProfileComponent, {data: data});
 
     dialogRef.afterClosed().subscribe(result => {
       this.userService.getProfile().subscribe((resp: any) => this.DataUser = resp)
+      this.publicationsService.getPublications(localStorage.getItem('token') || '').subscribe(
+        resp => this.DataPublications = resp
+      )
     });
   }
 
