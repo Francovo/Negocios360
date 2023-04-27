@@ -6,23 +6,24 @@
     </div>
 
     <div class="infoUser">
-      <h1>{{DataUser.company}}</h1>
-      <h1>{{DataUser.companyDescription}}</h1>
-      <h1>{{DataUser.companyDescription}}</h1>
+      <h2>{{DataUser.company}}</h2>
+      <p>{{DataUser.companyDescription}}</p>
       <h1 *ngIf="DataUser.ubication"><mat-icon> location_on</mat-icon> {{DataUser.ubication}}</h1>
 
 
     </div>
     <div class="edit">
       <mat-card-actions>
-        <button mat-raised-button class="btnEdit" (click)="openModalCreatePublication(DataUser)">Edit Profile</button>
+        <button mat-raised-button color="warn" class="btnEdit" (click)="openModalCreatePublication(DataUser)">Edit</button>
       </mat-card-actions>
     </div>
 
   </div>
 
-  <div class="publicationsUser">
-    <app-card [Data]="DataPublications"></app-card>
+  <div  class="publicationsUser">
+    <div class="publications">
+      <app-card [Data]="DataPublications" [user]="usertoken"></app-card>
+    </div>
   </div>
 
 

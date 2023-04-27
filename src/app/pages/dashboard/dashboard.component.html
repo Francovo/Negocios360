@@ -3,12 +3,20 @@
 
   <div class="Dashboard">
 
-    <div class="news"></div>
+    <div class="containerNews">
+      <div class="news" *ngFor="let notice of news">
+        <label>{{notice.titulo}}</label>
+        <img src="{{notice.img}}">
+      </div>
+    </div>
 
     <div class="containerDash">
       <div class="createPubli">
         <button class="BtnCreate" (click)="openModalCreatePublication()">
-          Create Publication
+          <mat-icon>create</mat-icon>
+          <span>
+            Create Publication
+          </span>
         </button>
         <div class="InputSearch">
           <app-search-bar type="publicaciones" (searchQueryChanged)="getPublications($event)" ></app-search-bar>

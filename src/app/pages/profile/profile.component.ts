@@ -5,6 +5,7 @@ import { PublicationsData } from 'src/app/interfaces/publications.interface';
 import { UsersData } from 'src/app/interfaces/users.interface';
 import { PublicationsService } from 'src/app/services/publications.service';
 import { UsersService } from 'src/app/services/users.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -18,8 +19,10 @@ export class ProfileComponent implements OnInit{
   DataPublications!: PublicationsData[]
   DataUser!: UsersData
 
+  usertoken!: string
 
   ngOnInit(): void {
+      this.usertoken = localStorage.getItem('token')!
       this.userService.getProfile().subscribe((resp: any) => this.DataUser = resp)
       this.publicationsService.getPublications(localStorage.getItem('token') || '').subscribe(
         resp => this.DataPublications = resp

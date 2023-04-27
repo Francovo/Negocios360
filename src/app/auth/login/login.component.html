@@ -1,13 +1,15 @@
-<div>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-      <input type="text" placeholder="Email" formControlName="email">
-    </div>
-    <div>
-      <input type="password" placeholder="Password" formControlName="password">
-    </div>
-    <div>
+<div class="containerLogin">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="formLogin">
+      <input type='email' placeholder="Email" formControlName="email" class="email">
+      <label class="password">
+        <input type="{{ seePassword ? 'text' : 'password' }}" name="contraseña" placeholder="Password" formControlName="password" >
+        <button (click)="seePassword = !seePassword" type="button" class="btnSeePass">
+          <mat-icon>  {{ seePassword ? "visibility_off " : 'visibility' }}</mat-icon>
+        </button>
+      </label>
+      <div class="btnContainer">
       <button mat-raised-button type="submit">Login</button>
+      <button mat-raised-button color="warn" class="register" routerLink="/register">Register</button>
     </div>
   </form>
 </div>

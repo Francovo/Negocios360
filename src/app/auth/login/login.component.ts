@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,24 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private fb: FormBuilder){}
 
+  seePassword:boolean = false
+
   loginForm = this.fb.group({
-    email: ['juan.perez@example.com', [Validators.required, Validators.email] ],
-    password: ['G4h&k2f$', [Validators.required] ],
+    email: ['', [Validators.required, Validators.email] ],
+    password: ['', [Validators.required] ],
 
   })
 
   login(){
     if (this.loginForm.invalid) {
-      return console.log('algo no esta como debe');
+      Swal.fire('Error', 'Datos ingresados de forma incorrecta', 'error');
     } else {
-    this.authService.login(this.loginForm.value).subscribe()
+    this.authService.login(this.loginForm.value).subscribe(
+      (err) => {
+        //Si sucede un error
+        console.log(err);
+      }
+    )
   }}
 
 }

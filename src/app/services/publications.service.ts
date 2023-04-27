@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environments';
 import { PublicationsData } from '../interfaces/publications.interface';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, delay } from 'rxjs';
 
 const base_url = environment.base_url
 
@@ -53,12 +53,22 @@ export class PublicationsService {
     console.log(id);
     return this.http.put(`${base_url}/publicaciones/${id}`, formData)
     .pipe(
-      tap(
-        resp => console.log(resp)
-      ),
       catchError((error:any) =>
        of(console.error(error))
       )
+    );
+  }
+
+
+  getNews(){
+
+    return this.http.get<PublicationsData[]>(`${base_url}/noticias`)
+
+    .pipe(
+      catchError(error => {
+        console.error(error);
+        return of([] as PublicationsData[]); // devuelve un arreglo vacío en caso de error
+      })
     );
   }
 }

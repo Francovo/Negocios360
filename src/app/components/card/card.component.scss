@@ -3,22 +3,59 @@
   flex-direction: column;
   gap: 5rem;
   .publicationCard{
-    max-width: 500px;
+    width: 100%;
+    border-radius: 20px;
 
-    .avatar{
-      border: solid white 1px;
-      width: 60px;
-      height: 60px;
+    .Header{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      .avatar{
+        margin-left: .5rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          border-radius: 100px;
+          width: 100%;
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+        }
+      }
+      .containerTitle{
+        width: 100%;
+        margin: 0 1.5rem;
+        color: white;
+        .title{
+          font-size: larger;
+        }
+      }
+    }
+
+    .imgPubli{
       display: flex;
       justify-content: center;
-      align-items: center;
-      img{
-        border-radius: 100px;
-        width: 100%;
-        -webkit-user-drag: none;
-        -khtml-user-drag: none;
-        -moz-user-drag: none;
-        -o-user-drag: none;
+      padding: 1rem;
+      max-height: 700px;
+      border-radius: 40px;
+    }
+
+    .content{
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      .description{
+        font-size: medium;
+      }
+      .date{
+        align-self: self-end;
+        color: aliceblue;
       }
     }
   }

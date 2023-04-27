@@ -6,10 +6,13 @@
   .user{
     height: fit-content;
     display: flex;
+    padding: 2rem;
+    gap: 1rem;
+    background: #424242;
     .imgUser{
       display: flex;
-      border: solid blue 1px;
       align-items: center;
+      border-radius: 20px;
       img{
         width: 200px;
       }
@@ -18,22 +21,26 @@
       display: flex;
       flex-direction: column;
       margin: 1rem;
+      color: white;
+
     }
     .edit{
       display: flex;
       align-items:end;
-      border: solid blue 1px;
       .btnEdit{
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
       }
     }
   }
 
   .publicationsUser{
-    border: solid white 1px;
     display: flex;
     justify-content: center;
     padding: 3rem 0;
+    .publications{
+      width: 40%;
+      height: 50%;
+    }
   }
 
 }

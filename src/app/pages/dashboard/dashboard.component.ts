@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PublicationsService } from 'src/app/services/publications.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCreatePublicationComponent } from 'src/app/components/modal-create-publication/modal-create-publication.component';
+import Swal from 'sweetalert2';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +15,11 @@ export class DashboardComponent implements OnInit{
   constructor(private publicationsService: PublicationsService, public dialog: MatDialog) {}
 
   dataPublications!: any
+  news: any
 
   ngOnInit(): void {
     this.getPublications();
+    this.getNews()
   }
 
   getPublications(query?: string) {
@@ -30,6 +34,11 @@ export class DashboardComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       this.getPublications();
     });
+  }
+
+  getNews(){
+    this.publicationsService.getNews()
+    .subscribe(resp => this.news = resp)
   }
 }
 

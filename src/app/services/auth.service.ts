@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { catchError, map, of, tap } from 'rxjs';
+import Swal from 'sweetalert2';
 
 const base_url = environment.base_url
 
@@ -23,9 +24,8 @@ export class AuthService {
     .pipe(
       map(
           (resp: any) => {
-
            if (resp.length === 0) {
-              return console.warn('ERROR, email no encontrado');
+             Swal.fire('Error', 'Email no encontrado', 'error');
             } else {
               if (resp[0].password === formData.password) {
                 this.userID = resp[0].id;
@@ -35,13 +35,15 @@ export class AuthService {
                 this.router.navigateByUrl('negocios360/dashboard');
               }
               else {
-                console.warn('ERROR password errada');
+                Swal.fire('Error', 'Password errada', 'error');
               }
 
             }
           }
       ),
-      catchError(error => of(console.log(error)))
+      catchError((error: any) => {
+       return Swal.fire('Error', error , 'error');
+      })
     )
   }
 
@@ -56,8 +58,9 @@ export class AuthService {
         localStorage.setItem('company', formData.company)
         this.router.navigateByUrl('login')}
         ),
-      catchError(err => of(console.log(err)))
-    )
+        catchError((error: any) => {
+          return Swal.fire('Error', error , 'error');
+         })    )
   }
 
   isAuth(){

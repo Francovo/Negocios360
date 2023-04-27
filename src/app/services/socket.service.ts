@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 })
 export class SocketService {
 
-  io = io("http://localhost:3500/", {
+  io = io("https://back-negocios-360.onrender.com", {
     autoConnect: true
   })
 

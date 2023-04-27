@@ -26,13 +26,4 @@ export class CommunityComponent implements OnInit{
   }
 
 
-    //Funcion de apertura de modal para creacion de una publicacion
-    openModalMessage(user: UsersData) {
-      const dialogRef = this.dialog.open(ModalNewMessageComponent, {data:user});
-
-      dialogRef.afterClosed().subscribe(result => {
-
-      });
-    }
-
 }

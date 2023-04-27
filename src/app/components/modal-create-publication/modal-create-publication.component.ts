@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { PublicationsService } from 'src/app/services/publications.service';
+import Swal from 'sweetalert2';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-modal-create-publication',
@@ -38,8 +40,14 @@ export class ModalCreatePublicationComponent {
     this.authService.getUserImg().subscribe(img => {
       console.log(img);
       const formData = {...this.PublicationForm.value, idUser: localStorage.getItem('token'), fecha: formattedDate, createdBy: localStorage.getItem('company'), userImg: img};
-      this.publicationsService.postPublications(formData).subscribe();
-      this.closeModal()
+      this.publicationsService.postPublications(formData)
+      .pipe(
+        delay(500)
+      )
+      .subscribe(() => {
+        Swal.fire('Success', 'Publication Created', 'success');
+        this.closeModal()
+      });
     });
     }
   }

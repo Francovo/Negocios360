@@ -3,6 +3,8 @@ import { PublicationsData } from '../../interfaces/publications.interface';
 import { ModalEditarPublicationComponent } from '../modal-editar-publication/modal-editar-publication.component';
 import { PublicationsService } from 'src/app/services/publications.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -12,6 +14,9 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 export class CardComponent implements OnChanges {
 
   @Input() Data!: PublicationsData[]
+
+  @Input() user?: string
+
 
   DataPublications!: PublicationsData[]
 
@@ -36,11 +41,11 @@ export class CardComponent implements OnChanges {
   }
 
     //Funcion de apertura de modal para creacion de una publicacion
-    openModalCreatePublication(data: any) {
+    openModalEditPublication(data: any) {
       const dialogRef = this.dialog.open(ModalEditarPublicationComponent, {data: data});
 
       dialogRef.afterClosed().subscribe(result => {
-        this.publicationsService.getPublications()
+        this.publicationsService.getPublications(this.user)
       .subscribe(
         resp => this.DataPublications = resp
       )

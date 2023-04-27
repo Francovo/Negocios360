@@ -1,22 +1,10 @@
-<div>
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <div>
+<div class="containerRegister">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="FormRegister">
       <input type="url" placeholder="URL Profile Image" formControlName="userImg">
-    </div>
-    <div>
       <input type="text" placeholder="Company" formControlName="company">
-    </div>
-    <div>
       <input type="email" placeholder="Email" formControlName="email">
-    </div>
-    <div>
       <input type="password" placeholder="Password" formControlName="password">
-    </div>
-
-    <div>
       <textarea type="text" placeholder="Description Company" formControlName="companyDescription" minlength="1"></textarea>
-    </div>
-    <div>
       <select formControlName="ubication">
         <option value="">Ubicacion de la empresa</option>
         <option value="Bogota">Bogota</option>
@@ -24,11 +12,10 @@
         <option value="Tunja">Tunja</option>
         <option value="Barranquilla">Barranquilla</option>
         <option value="Exterior">Exterior</option>
-
       </select>
-    </div>
-    <div>
-      <button type="submit">Register</button>
+    <div class="ContainerBtn">
+      <button mat-raised-button type="submit">Register</button>
+      <button mat-raised-button color="warn" class="login" routerLink="/login">Login</button>
     </div>
   </form>
 </div>

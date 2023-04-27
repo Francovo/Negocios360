@@ -1,6 +1,10 @@
 <div class="containerCommunity">
 
-  <app-search-bar (searchQueryChanged)="getUsers($event)"></app-search-bar>
+  <div class="SearchBar">
+    <div class="InputSearch">
+        <app-search-bar (searchQueryChanged)="getUsers($event)"></app-search-bar>
+    </div>
+  </div>
   <div class="community" *ngIf="dataUsers && dataUsers.length > 0; else DataNotFound">
     <div *ngFor="let user of dataUsers" class="ContainerCard">
       <mat-card class="userCard" >
@@ -19,7 +23,7 @@
         </div>
       </mat-card>
       <div class="sendMessage">
-        <button mat-raised-button (click)="openModalMessage(user)">
+        <button mat-raised-button routerLink="/negocios360/chat">
         <mat-icon> message</mat-icon></button>
       </div>
     </div>

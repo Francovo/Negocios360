@@ -1,14 +1,13 @@
 <div class="Modal">
   <div class="Containerform">
     <form class="FormCreatePublication" [formGroup]="PublicationForm" (ngSubmit)="PostPublication()">
-      <input type="text" placeholder="Title" formControlName="titulo">
+      <input type="text" placeholder="Title" formControlName="titulo" maxlength="67">
       <textarea type="text" placeholder="Description" formControlName="descripcion"></textarea>
       <input type="url" placeholder="Image Url" formControlName="img">
-      <button type="submit" class="btnSubmit">Submit</button>
+      <button type="submit" mat-raised-button color="warn" class="btnSubmit">Submit</button>
     </form>
-  </div>
-
-  <div class="ContainerBtn">
-    <button class="BtnClose" (click)="closeModal()">Close</button>
+    <div class="ContainerBtn">
+      <button mat-raised-button color="warn" class="BtnClose" (click)="closeModal()">Close</button>
+    </div>
   </div>
 </div>

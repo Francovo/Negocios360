@@ -1,20 +1,40 @@
 .Modal{
-  border: solid red 1px;
-  width: 550px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  height: 600px;
+  border-radius: 20px;
+  padding: 1rem .5rem 0 .5rem;
 
     .FormCreatePublication{
-      padding: 5rem;
+      padding: 3rem;
+      margin:0 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: solid white 1px;
-      gap: 1rem;
+      gap: 2rem;
+      border: solid #acaeaf 2px;
+      border-radius: 20px;
+      background: white;
       input,textarea {
         width: 100%;
+        padding: .5rem;
+        border-radius: 10px;
+        border: solid #3A3B3C 1px;
+        outline: none;
+      }
+      textarea{
+        height: 100px;
       }
       .btnSubmit{
         width: 50%;
+      }
+
+      select{
+        padding: .5rem;
+        border-radius: 10px;
+        outline: none;
       }
 
   }
@@ -23,6 +43,7 @@
     display: flex;
     justify-content: end;
     padding: .5rem;
+    margin-top: .5rem;
     .BtnClose{
 
     }

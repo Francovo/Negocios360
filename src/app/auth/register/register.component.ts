@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -41,10 +42,15 @@ export class RegisterComponent {
   // Se llama al servicio y se envian los datos del formulario + el id generado
   register(){
     if (this.registerForm.invalid) {
-      return console.log('algo no esta como debe');
+      Swal.fire('Error', 'Datos ingresados de forma incorrecta', 'error');
     } else {
       const formData = {...this.registerForm.value, id: this.generarId()}
-      this.authService.register(formData).subscribe()
+      this.authService.register(formData).subscribe(
+        (err) => {
+          //Si sucede un error
+          console.log(err);
+        }
+      )
     }
   }
 
