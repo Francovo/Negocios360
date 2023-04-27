@@ -24,6 +24,10 @@
       resize: none;
     }
 
+    textarea{
+      min-height: 50px
+    }
+
     select{
       padding: .5rem;
       border-radius: 10px;
