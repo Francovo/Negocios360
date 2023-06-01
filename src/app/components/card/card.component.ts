@@ -46,9 +46,8 @@ export class CardComponent implements  OnInit {
         this.getPublications()
       } else {
         this.DataPublications = data.data
-        console.log('data del store');
+        console.log('data del store', this.DataPublications);
       }
-      this.DataUser =  localStorage.getItem('company')
     });
   }
 
