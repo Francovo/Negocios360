@@ -43,7 +43,22 @@ export class RegisterComponent {
   // Se llama al servicio y se envian los datos del formulario + el id generado
   register() {
     if (this.registerForm.invalid) {
-      Swal.fire('Error', 'Datos ingresados de forma incorrecta', 'error');
+      let errorMessage = 'Datos ingresados de forma incorrecta';
+      if (this.registerForm.controls.userImg.errors) {
+        errorMessage = 'Error en el campo de URL de imagen de perfil';
+      } else if (this.registerForm.controls.company.errors) {
+        errorMessage = 'Error en el campo de compañía';
+      } else if (this.registerForm.controls.email.errors) {
+        errorMessage = 'Error en el campo de correo electrónico';
+      } else if (this.registerForm.controls.password.errors) {
+        errorMessage = 'Error en el campo de contraseña';
+      } else if (this.registerForm.controls.companyDescription.errors) {
+        errorMessage = 'Error en el campo de descripción de la compañía';
+      } else if (this.registerForm.controls.ubication.errors) {
+        errorMessage = 'Error en el campo de ubicación';
+      }
+      Swal.fire('Error', errorMessage, 'error');
+      console.log(this.registerForm);
     } else {
       this.registerDisabled = true;
       const formData = {...this.registerForm.value, id: this.generarId()}
