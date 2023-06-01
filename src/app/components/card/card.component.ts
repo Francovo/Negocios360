@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Inject } from '@angular/core';
+import { Component, Input, OnChanges, Inject, OnInit } from '@angular/core';
 import { PublicationsData } from '../../interfaces/publications.interface';
 import { ModalEditarPublicationComponent } from '../modal-editar-publication/modal-editar-publication.component';
 import { PublicationsService } from 'src/app/services/publications.service';
@@ -6,15 +6,18 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { delay } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
+import { Store } from '@ngrx/store';
+import { appState } from 'src/app/appStore.reducer';
+import { getPublications } from 'src/app/pages/NGRX/pages.actions';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnChanges {
+export class CardComponent implements  OnInit {
 
-  @Input() Data!: PublicationsData[]
+  // @Input() Data!: PublicationsData[]
 
   @Input() user?: string
 
@@ -23,14 +26,36 @@ export class CardComponent implements OnChanges {
   DataUser!: any
 
   constructor(private publicationsService: PublicationsService, public dialog: MatDialog, private userService: UsersService,
+    private store: Store<appState>,
+
   ) {}
 
 
   ngOnChanges() {
-    if (this.Data) {
-    this.DataPublications = this.Data
-    this.userService.getProfile().subscribe((resp: any) => this.DataUser = resp)
+    if (this.user) {
+      this.getPublications()
     }
+  }
+
+  ngOnInit(): void {
+    this.store.select('dataPublications').subscribe((data: any) => {
+      //Este if es en caso de que se recargue la pagina y se vacie el store, en caso de que no se recargue nos ahorramos una peticion
+      // ya que la data estara en el store
+      if (data.length === 0) {
+        console.log('Se realizo la peticion de nuevo');
+        this.getPublications()
+      } else {
+        this.DataPublications = data.data
+        console.log('data del store');
+      }
+      this.DataUser =  localStorage.getItem('company')
+    });
+  }
+
+
+
+  getPublications(){
+    this.store.dispatch(getPublications({'texto': this.user}));
   }
 
   // Funcion que permite saber si el usuario es dueno de una publicacion
@@ -48,10 +73,7 @@ export class CardComponent implements OnChanges {
       const dialogRef = this.dialog.open(ModalEditarPublicationComponent, {data: data});
 
       dialogRef.afterClosed().subscribe(result => {
-        this.publicationsService.getPublications(this.user)
-      .subscribe(
-        resp => this.DataPublications = resp
-      )
+        this.getPublications()
       });
     }
 

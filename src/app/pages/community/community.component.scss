@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .containerCommunity {
   width: 100%;
   display: flex;
@@ -8,7 +10,7 @@
 
   .SearchBar{
     width: 50%;
-    background: #313233;
+    background: $color-gris-oscuro;
     border-radius: 10px;
     padding: 1rem;
   }
@@ -23,7 +25,7 @@
     .ContainerCard {
       width: 20%;
       height: fit-content;
-      background: rgb(194, 193, 193);
+      background: $color-gris;
       border-radius: 15px 15px 10px 10px;
 
       .userCard {
@@ -31,7 +33,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: white;
+        background: $color-claro;
         align-items: center;
         text-align: left;
         overflow: hidden;
@@ -59,7 +61,7 @@
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
-          background-color: rgb(238, 238, 238);
+          background-color: $color-claro;
           border-radius: 20px;
           align-items: center;
           justify-content: center;
@@ -82,7 +84,7 @@
             align-items: center;
             justify-content: center;
             .mat-icon {
-              color: red;
+              color: $color-secundario;
             }
           }
         }

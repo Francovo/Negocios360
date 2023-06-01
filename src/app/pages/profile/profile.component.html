@@ -1,6 +1,6 @@
 <div class="containerProfile">
 
-  <div class="user">
+  <div class="user" *ngIf="DataUser; else Cargando">
     <div class="imgUser">
       <img mat-card-image src="{{ DataUser.userImg ? DataUser.userImg : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' }}" alt="{{ DataUser.company}}" (error)="setDefaultImage($event)">
     </div>
@@ -20,9 +20,13 @@
 
   </div>
 
+  <ng-template #Cargando>
+    CARGANDo
+  </ng-template>
+
   <div  class="publicationsUser">
     <div class="publications">
-      <app-card [Data]="DataPublications" [user]="usertoken"></app-card>
+      <app-card [user]="usertoken"></app-card>
     </div>
   </div>
 

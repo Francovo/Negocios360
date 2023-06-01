@@ -24,6 +24,7 @@ export class RegisterComponent {
 
   })
 
+  registerDisabled = false;
 
   // Generacion de un id aleatorio UNICO que se asigna al usuario a la hora de ser registrado
   generarId(){
@@ -40,15 +41,19 @@ export class RegisterComponent {
 
 
   // Se llama al servicio y se envian los datos del formulario + el id generado
-  register(){
+  register() {
     if (this.registerForm.invalid) {
       Swal.fire('Error', 'Datos ingresados de forma incorrecta', 'error');
     } else {
+      this.registerDisabled = true;
       const formData = {...this.registerForm.value, id: this.generarId()}
       this.authService.register(formData).subscribe(
         (err) => {
           //Si sucede un error
           console.log(err);
+        },
+        () => {
+          this.registerDisabled = false;
         }
       )
     }

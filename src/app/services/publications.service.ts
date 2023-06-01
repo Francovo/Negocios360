@@ -23,11 +23,14 @@ export class PublicationsService {
     :  this.http.get<PublicationsData[]>(`${base_url}/publicaciones`)
     .pipe(
       map(
-        resp => resp.sort((a,b) => {
-          const fechaA = new Date(a.fecha).getTime();
-          const fechaB = new Date(b.fecha).getTime();
-          return fechaB - fechaA;
-        })
+        resp => {
+          const sortedPublications = resp.sort((a,b) => {
+            const fechaA = new Date(a.fecha).getTime();
+            const fechaB = new Date(b.fecha).getTime();
+            return fechaB - fechaA;
+          });
+          return sortedPublications;
+        }
       ),
       catchError(error => {
         console.error(error);

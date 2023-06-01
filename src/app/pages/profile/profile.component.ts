@@ -6,6 +6,9 @@ import { UsersData } from 'src/app/interfaces/users.interface';
 import { PublicationsService } from 'src/app/services/publications.service';
 import { UsersService } from 'src/app/services/users.service';
 import { delay } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { appState } from 'src/app/appStore.reducer';
+import { getUser } from '../NGRX/pages.actions';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +17,9 @@ import { delay } from 'rxjs';
 })
 export class ProfileComponent implements OnInit{
 
-  constructor(private userService: UsersService, private publicationsService: PublicationsService, public dialog: MatDialog){}
+  constructor(private userService: UsersService, private publicationsService: PublicationsService, public dialog: MatDialog,
+    private store: Store<appState>,
+    ){}
 
   DataPublications!: PublicationsData[]
   DataUser!: UsersData
@@ -23,12 +28,23 @@ export class ProfileComponent implements OnInit{
 
   ngOnInit(): void {
       this.usertoken = localStorage.getItem('token')!
-      this.userService.getProfile().subscribe((resp: any) => this.DataUser = resp)
-      this.publicationsService.getPublications(localStorage.getItem('token') || '').subscribe(
-        resp => this.DataPublications = resp
-      )
+
+      this.store.select('userData').subscribe((data: any) => {
+        //Este if es en caso de que se recargue la pagina y se vacie el store, en caso de que no se recargue nos ahorramos una peticion
+        // ya que la data estara en el store
+        if (data.length === 0) {
+          console.log('Se realizo la peticion de nuevo');
+          this.getUser()
+        } else {
+          this.DataUser = data.data
+          console.log('data del store Profile');
+        }
+      });
   }
 
+  getUser(){
+    this.store.dispatch(getUser());
+  }
 
   openModalEditProfile(data: any) {
     const dialogRef = this.dialog.open(ModalEditProfileComponent, {data: data});

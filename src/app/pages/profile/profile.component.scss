@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .containerProfile{
   display: flex;
   flex-direction: column;
@@ -8,7 +10,7 @@
     display: flex;
     padding: 2rem;
     gap: 1rem;
-    background: #424242;
+    background: $color-gris-2;
     .imgUser{
       display: flex;
       align-items: center;
@@ -21,7 +23,7 @@
       display: flex;
       flex-direction: column;
       margin: 1rem;
-      color: white;
+      color: $color-claro;
 
     }
     .edit{

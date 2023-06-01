@@ -14,7 +14,7 @@
         <option value="Exterior">Exterior</option>
       </select>
     <div class="ContainerBtn">
-      <button mat-raised-button type="submit">Register</button>
+      <button mat-raised-button type="submit" [disabled]="registerDisabled" >Register</button>
       <button mat-raised-button color="warn" class="login" routerLink="/login">Login</button>
     </div>
   </form>

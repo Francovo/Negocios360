@@ -7,7 +7,7 @@ import { io } from 'socket.io-client';
 export class SocketService {
 
   io = io("https://back-negocios-360.onrender.com", {
-    autoConnect: true
+    autoConnect: false
   })
 
   constructor() {}

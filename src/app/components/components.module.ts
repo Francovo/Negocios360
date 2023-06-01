@@ -23,7 +23,6 @@ import { ModalNewMessageComponent } from './modal-new-message/modal-new-message.
     SearchBarComponent,
     ModalEditProfileComponent,
     ModalNewMessageComponent,
-
   ],
   imports: [
     CommonModule,
@@ -37,7 +36,6 @@ import { ModalNewMessageComponent } from './modal-new-message/modal-new-message.
     NavbarComponent,
     ModalCreatePublicationComponent,
     SearchBarComponent,
-
 
   ]
 })

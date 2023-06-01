@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { catchError, map, of, tap } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
+import { appState } from '../appStore.reducer';
+import { getUser } from '../pages/NGRX/pages.actions';
 
 const base_url = environment.base_url
 
@@ -15,7 +18,9 @@ export class AuthService {
   public userID!: string
   public company!: string
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+    private store: Store<appState>,
+    ) { }
 
 
   // Se hace peticion de la data y se compara si contiene los datos ingresador por el user
@@ -32,6 +37,13 @@ export class AuthService {
                 this.company = resp[0].company;
                 localStorage.setItem('token', this.userID)
                 localStorage.setItem('company', this.company)
+                this.store.select('userData').subscribe((data) => {
+                  console.log(data.data); ;
+                });
+
+                //GetUser
+                this.store.dispatch(getUser());
+
                 this.router.navigateByUrl('negocios360/dashboard');
               }
               else {
@@ -56,7 +68,7 @@ export class AuthService {
         this.userID = formData.id,
         localStorage.setItem('token', this.userID)
         localStorage.setItem('company', formData.company)
-        this.router.navigateByUrl('login')}
+        this.router.navigateByUrl('')}
         ),
         catchError((error: any) => {
           return Swal.fire('Error', error , 'error');

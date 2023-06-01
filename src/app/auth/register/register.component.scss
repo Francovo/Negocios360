@@ -1,3 +1,6 @@
+@import '/src/styles.scss';
+
+
 .containerRegister{
   display: flex;
   justify-content: center;
@@ -5,9 +8,11 @@
   height: 99%;
   width: 100%;
   position: fixed;
+  background-image: url('../../../assets/images/low-poly-grid-haikei.svg') ;
+
   .FormRegister{
     border-radius: 10px;
-    background: white;
+    background: $color-claro;
     padding: 5rem;
     display: flex;
     flex-direction: column;
@@ -20,7 +25,7 @@
       padding: .5rem;
       border-radius: 10px;
       border: 0;
-      background-color: rgba(139, 138, 138, 0.418);
+      background-color: $color-gris-placeholder;
       resize: none;
     }
 
@@ -32,7 +37,7 @@
       padding: .5rem;
       border-radius: 10px;
       border: 0;
-      background-color: rgba(139, 138, 138, 0.418);
+      background-color: $color-gris-placeholder;
     }
 
     .ContainerBtn{
